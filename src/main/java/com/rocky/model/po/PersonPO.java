@@ -4,14 +4,22 @@ package com.rocky.model.po;
  * Created by rocky on 16/9/2.
  */
 public class PersonPO {
-    private long id;
+    private Long id;
     private String name;
 
-    public long getId() {
+    public PersonPO() {
+    }
+
+    public PersonPO(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

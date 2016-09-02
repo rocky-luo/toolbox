@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IHelloWorldDAO {
     PersonPO getById(@Param("id") Long id);
+    void insert(@Param("person") PersonPO personPO);
 }

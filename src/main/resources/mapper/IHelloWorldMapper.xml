@@ -4,4 +4,8 @@
     <select id="getById" resultType="com.rocky.model.po.PersonPO">
         SELECT * FROM person WHERE id = #{id}
     </select>
+
+    <insert id="insert">
+        insert into person values( null, #{person.name});
+    </insert>
 </mapper>
