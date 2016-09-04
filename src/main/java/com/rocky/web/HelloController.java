@@ -6,6 +6,7 @@ import com.rocky.service.IHelloWorldService;
 import org.apache.log4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,6 +24,12 @@ public class HelloController {
     private IHelloWorldService helloWorldService;
 
     @RequestMapping("/world")
+    @ResponseBody
+    public String helloWorld(){
+        return "hello, world";
+    }
+
+    @RequestMapping("/name")
     @ResponseBody
     public String hello(Long id) {
         logger.error("this is not cool~");
@@ -43,4 +50,14 @@ public class HelloController {
         helloWorldService.batchInsert(pos);
         return "transactional over";
     }
+
+    @RequestMapping("/freemarker")
+    public String freemarker(Long id, Model model) {
+        PersonPO personPO = helloWorldService.getById(id);
+        model.addAttribute("name", personPO.getName());
+        model.addAttribute("id", personPO.getId());
+        return "hello";
+    }
+
+
 }
