@@ -1,6 +1,7 @@
 package com.rocky.web;
 
 import com.google.common.collect.Lists;
+import com.rocky.dao.IHelloWorldDAO;
 import com.rocky.model.po.PersonPO;
 import com.rocky.service.IHelloWorldService;
 import org.apache.log4j.Logger;
@@ -22,6 +23,8 @@ public class HelloController {
     private org.slf4j.Logger logger = LoggerFactory.getLogger(HelloController.class);
     @Resource
     private IHelloWorldService helloWorldService;
+    @Resource
+    private IHelloWorldDAO helloWorldDAO;
 
     @RequestMapping("/world")
     @ResponseBody
@@ -57,6 +60,17 @@ public class HelloController {
         model.addAttribute("name", personPO.getName());
         model.addAttribute("id", personPO.getId());
         return "hello";
+    }
+
+    @RequestMapping("/batchInsert")
+    @ResponseBody
+    public String batchInsert(){
+        PersonPO po = new PersonPO(null, "rocky");
+        PersonPO po1 = new PersonPO(null, "luoqi");
+        List<PersonPO> pos = Lists.newArrayList(po, po1);
+        helloWorldDAO.batchInsert(pos);
+        System.out.println(pos);
+        return "ok";
     }
 
 

@@ -8,4 +8,11 @@
     <insert id="insert">
         insert into person values( null, #{person.name});
     </insert>
+
+    <insert id="batchInsert" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.ArrayList">
+        INSERT INTO person (id, name) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.name})
+        </foreach>
+    </insert>
 </mapper>

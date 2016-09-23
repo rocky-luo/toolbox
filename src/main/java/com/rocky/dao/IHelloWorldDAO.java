@@ -4,6 +4,8 @@ import com.rocky.model.po.PersonPO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by rocky on 16/9/2.
  */
@@ -11,4 +13,5 @@ import org.springframework.stereotype.Repository;
 public interface IHelloWorldDAO {
     PersonPO getById(@Param("id") Long id);
     void insert(@Param("person") PersonPO personPO);
+    void batchInsert(List<PersonPO> personPOList);
 }
