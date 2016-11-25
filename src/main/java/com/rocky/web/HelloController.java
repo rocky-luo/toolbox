@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import com.rocky.dao.IHelloWorldDAO;
 import com.rocky.model.po.PersonPO;
 import com.rocky.service.IHelloWorldService;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +20,7 @@ import java.util.List;
 @RequestMapping("/hello")
 @Controller
 public class HelloController {
-    private org.slf4j.Logger logger = LoggerFactory.getLogger(HelloController.class);
+    private Logger logger = LoggerFactory.getLogger(HelloController.class);
     @Resource
     private IHelloWorldService helloWorldService;
     @Resource

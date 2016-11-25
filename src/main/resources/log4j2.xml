@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="off">
+    <properties>
+        <property name="pattern">[%-5p] %d{yy-MM-dd HH:mm:ss.SSS}[%c] %F -- %l %m %n</property>
+        <property name="fileLocation">/logs/${project.artifactId}/${project.artifactId}.log</property>
+    </properties>
+    <appenders>
+        <Console name="stdout" target="SYSTEM_OUT">
+            <PatternLayout pattern="${pattern}" />
+        </Console>
+        <rollingRandomAccessFile name="daily" fileName="${fileLocation}"
+                                 filePattern="${fileLocation}.%d{yyyy-MM-dd}" append="true">
+            <PatternLayout pattern="${pattern}"/>
+            <policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </policies>
+        </rollingRandomAccessFile>
+    </appenders>
+    <loggers>
+        <root level="debug">
+            <appender-ref ref="stdout"/>
+            <appender-ref ref="daily"/>
+        </root>
+    </loggers>
+</configuration>
