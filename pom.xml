@@ -223,7 +223,7 @@
 
 
     <build>
-        <finalName>${project.artifactId}-release-${project.version}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources/</directory>
@@ -250,7 +250,7 @@
                         <port>${jetty.port}</port>
                     </httpConnector>
                     <webApp>
-                        <contextPath>/</contextPath>
+                        <contextPath>/${project.artifactId}</contextPath>
                     </webApp>
                 </configuration>
             </plugin>
