@@ -55,6 +55,6 @@
 
 <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/static/js/mybatis.js"></script>
+<script src="/toolbox/static/js/mybatis.js"></script>
 </body>
 </html>

@@ -15,7 +15,7 @@ function bind() {
         database =  $(this).val();
         console.log(database);
         $.ajax({
-            url:"/mysql/tables",
+            url:"/toolbox/mysql/tables",
             data:{
                 database:database
             },
@@ -43,7 +43,7 @@ function bind() {
         table = $("#tables").val();
         $code.empty();
         $.ajax({
-            url:"/mysql/javabean",
+            url:"/toolbox/mysql/javabean",
             data:{
                 database:database,
                 table:table
@@ -62,7 +62,7 @@ function bind() {
         table = $("#tables").val();
         $code.empty();
         $.ajax({
-            url:"/mysql/mapper",
+            url:"/toolbox/mysql/mapper",
             data:{
                 database:database,
                 table:table
@@ -81,7 +81,7 @@ function bind() {
         table = $("#tables").val();
         $code.empty();
         $.ajax({
-            url:"/mysql/dao",
+            url:"/toolbox/mysql/dao",
             data:{
                 database:database,
                 table:table
@@ -106,7 +106,7 @@ function databaseSelectInit() {
     $databases = $("#databases");
     $databases.empty();
     $.ajax({
-        url:"/mysql/databases",
+        url:"/toolbox/mysql/databases",
         async:false,
         success:function(data) {
             d = JSON.parse(data);
