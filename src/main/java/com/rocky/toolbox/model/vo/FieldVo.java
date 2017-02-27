@@ -1,4 +1,4 @@
-package com.rocky.code.generator.model.vo;
+package com.rocky.toolbox.model.vo;
 
 /**
  * Created by rocky on 17/2/23.

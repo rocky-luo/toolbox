@@ -1,8 +1,8 @@
-package com.rocky.code.generator.model.converts;
+package com.rocky.toolbox.model.converts;
 
-import com.rocky.code.generator.db.FieldInfo;
-import com.rocky.code.generator.model.vo.FieldVo;
-import com.rocky.code.generator.utils.Underline2Camel;
+import com.rocky.toolbox.db.FieldInfo;
+import com.rocky.toolbox.model.vo.FieldVo;
+import com.rocky.toolbox.utils.Underline2Camel;
 
 import java.math.BigDecimal;
 import java.sql.Date;

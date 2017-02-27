@@ -1,4 +1,4 @@
-package com.rocky.code.generator.db;
+package com.rocky.toolbox.db;
 
 /**
  * Created by rocky on 17/2/23.

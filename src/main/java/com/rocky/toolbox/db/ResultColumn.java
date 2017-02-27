@@ -1,4 +1,4 @@
-package com.rocky.code.generator.db;
+package com.rocky.toolbox.db;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

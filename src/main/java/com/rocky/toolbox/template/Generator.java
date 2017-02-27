@@ -1,4 +1,4 @@
-package com.rocky.code.generator.template;
+package com.rocky.toolbox.template;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;

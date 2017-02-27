@@ -1,11 +1,10 @@
-package com.rocky.code.generator.web;
+package com.rocky.toolbox.web;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.rocky.code.generator.db.Structure;
-import com.rocky.code.generator.model.converts.FieldConvert;
-import com.rocky.code.generator.model.converts.TableConvert;
-import com.rocky.code.generator.template.Generator;
+import com.rocky.toolbox.db.Structure;
+import com.rocky.toolbox.model.converts.TableConvert;
+import com.rocky.toolbox.template.Generator;
 import freemarker.template.TemplateException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -20,7 +19,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Created by rocky on 17/2/23.

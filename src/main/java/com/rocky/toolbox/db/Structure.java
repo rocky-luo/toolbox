@@ -1,4 +1,4 @@
-package com.rocky.code.generator.db;
+package com.rocky.toolbox.db;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;

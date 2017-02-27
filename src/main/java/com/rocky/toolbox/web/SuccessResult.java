@@ -1,4 +1,4 @@
-package com.rocky.code.generator.web;
+package com.rocky.toolbox.web;
 
 /**
  * Created by rocky on 17/2/23.

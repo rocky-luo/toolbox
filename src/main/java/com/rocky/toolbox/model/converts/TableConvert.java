@@ -1,8 +1,8 @@
-package com.rocky.code.generator.model.converts;
+package com.rocky.toolbox.model.converts;
 
-import com.rocky.code.generator.db.Structure;
-import com.rocky.code.generator.model.vo.TableVo;
-import com.rocky.code.generator.utils.Underline2Camel;
+import com.rocky.toolbox.db.Structure;
+import com.rocky.toolbox.model.vo.TableVo;
+import com.rocky.toolbox.utils.Underline2Camel;
 
 import java.util.stream.Collectors;
 
