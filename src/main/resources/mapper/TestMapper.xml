@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rocky.toolbox.dao.TestDao">
+
+    <insert id="insert">
+        INSERT INTO tb_test (id, activity_id, position, title, cake, is_ok, fu_dian, double_num, created_at, let_date, pic)
+        VALUE
+        (#{id}, #{activityId}, #{position}, #{title}, #{cake}, #{isOk}, #{fuDian}, #{doubleNum}, #{createdAt}, #{letDate}, #{pic})
+    </insert>
+
+    <insert id="batchInsert">
+        INSERT INTO tb_test (id, activity_id, position, title, cake, is_ok, fu_dian, double_num, created_at, let_date, pic)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.activityId}, #{item.position}, #{item.title}, #{item.cake}, #{item.isOk}, #{item.fuDian}, #{item.doubleNum}, #{item.createdAt}, #{item.letDate}, #{item.pic})
+        </foreach>
+    </insert>
+
+    <delete id="batchDeleteByIds">
+        DELETE from tb_test
+        WHERE id in
+        <foreach collection="list" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="updateById">
+        UPDATE tb_test
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="activityId != null">
+                activity_id = #{activityId},
+            </if>
+            <if test="position != null">
+                position = #{position},
+            </if>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="cake != null">
+                cake = #{cake},
+            </if>
+            <if test="isOk != null">
+                is_ok = #{isOk},
+            </if>
+            <if test="fuDian != null">
+                fu_dian = #{fuDian},
+            </if>
+            <if test="doubleNum != null">
+                double_num = #{doubleNum},
+            </if>
+            <if test="createdAt != null">
+                created_at = #{createdAt},
+            </if>
+            <if test="letDate != null">
+                let_date = #{letDate},
+            </if>
+            <if test="pic != null">
+                pic = #{pic},
+            </if>
+        </trim>
+        WHERE id = #{id}
+    </update>
+
+    <insert id="batchUpdateByIds">
+        INSERT INTO tb_test (id, activity_id, position, title, cake, is_ok, fu_dian, double_num, created_at, let_date, pic)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.activityId}, #{item.position}, #{item.title}, #{item.cake}, #{item.isOk}, #{item.fuDian}, #{item.doubleNum}, #{item.createdAt}, #{item.letDate}, #{item.pic})
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        <trim prefix="" suffixOverrides=",">
+            activity_id = VALUES(activity_id),
+            position = VALUES(position),
+            title = VALUES(title),
+            cake = VALUES(cake),
+            is_ok = VALUES(is_ok),
+            fu_dian = VALUES(fu_dian),
+            double_num = VALUES(double_num),
+            created_at = VALUES(created_at),
+            let_date = VALUES(let_date),
+            pic = VALUES(pic),
+        </trim>
+    </insert>
+
+    <select id="getById" resultType="com.rocky.toolbox.model.TestPo">
+        SELECT * FROM tb_test
+        WHERE id = #{id}
+    </select>
+
+    <select id="getByIds" resultType="com.rocky.toolbox.model.TestPo">
+        SELECT * FROM tb_test
+        WHERE id IN
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

@@ -13,7 +13,7 @@ ${'<'}mapper namespace="需要手动输入"${'>'}
         VALUES
     ${'<'}foreach collection="list" item="item" separator=","${'>'}
             (<#list table.fieldVos as field>${r'#{item.'}${field.camelField}${r'}'}<#if field_index != table.fieldVos?size - 1>, </#if></#list>)
-    ${'<'}/foreach>'${'>'}
+    ${'<'}/foreach${'>'}
     ${'<'}/insert${'>'}
 
     ${'<'}delete id="batchDeleteByIds"${'>'}
@@ -21,7 +21,7 @@ ${'<'}mapper namespace="需要手动输入"${'>'}
         WHERE ${table.primaryField.field} in
         ${'<'}foreach collection="list" item="id" index="index" open="(" close=")" separator=","${'>'}
             ${r'#{'}${table.primaryField.camelField}${r'}'}
-        ${'<'}/foreach>${'>'}
+        ${'<'}/foreach${'>'}
     ${'<'}/delete${'>'}
 
     ${'<'}update id="updateById"${'>'}
@@ -30,12 +30,13 @@ ${'<'}mapper namespace="需要手动输入"${'>'}
         <#list table.fieldVos as field>
             <#if field.primaryKey?string('true', 'false') == 'false'>
             ${'<'}if test="${field.camelField} != null"${'>'}
-            ${field.field} = ${r'#{'}${table.primaryField.camelField}${r'}'},
+            ${field.field} = ${r'#{'}${field.camelField}${r'}'},
             ${'<'}/if${'>'}
             </#if>
         </#list>
         ${'<'}/trim${'>'}
         WHERE ${table.primaryField.field} = ${r'#{'}${table.primaryField.camelField}${r'}'}
+        ${"<"}/update${'>'}
 
     ${'<'}insert id="batchUpdateByIds"${'>'}
         INSERT INTO ${table.tableName} (<#list table.fieldVos as field>${field.field}<#if field_index != table.fieldVos?size - 1>, </#if></#list>)
