@@ -29,7 +29,8 @@ public class FieldConvert {
             return Long.class;
         }else if (jdbcType.startsWith("int")){
             return Integer.class;
-        }else if (jdbcType.startsWith("char") || jdbcType.startsWith("varchar")) {
+        }else if (jdbcType.startsWith("char") || jdbcType.startsWith("varchar")
+                || jdbcType.startsWith("text")) {
             return String.class;
         }else if (jdbcType.startsWith("tinyint")) {
             return Boolean.class;
@@ -39,9 +40,7 @@ public class FieldConvert {
             return Double.class;
         }else if (jdbcType.startsWith("decimal")){
             return BigDecimal.class;
-        }else if (jdbcType.startsWith("datetime")) {
-            return Timestamp.class;
-        }else if (jdbcType.equals("date")) {
+        }else if (jdbcType.equals("date") || jdbcType.startsWith("datetime")) {
             return Date.class;
         }else if (jdbcType.equals("blob")) {
             return byte[].class;
