@@ -1,20 +1,3 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-        .highlight {
-            padding: 9px 14px;
-            margin-bottom: 14px;
-            background-color: #f7f7f9;
-            border: 1px solid #e1e1e8;
-            border-radius: 4px;
-        }
-    </style>
-</head>
-
 <body>
 <div class="container-fluid">
     <div class="row" style="margin: 10px">
@@ -51,10 +34,7 @@
         </div>
     </div>
 </div>
-
-
-<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/toolbox/static/js/mybatis.js"></script>
 </body>
-</html>
+<head>
+    <script src="/toolbox/static/js/mybatis.js"></script>
+</head>

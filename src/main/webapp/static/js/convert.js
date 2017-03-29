@@ -57,7 +57,7 @@ function genFieldsBn($container, fields) {
             .val(field.name)
             .attr("data-type", field.type)
             .attr("name", name);
-        $wapper = $('<div class="row"></div>').append($radio).append(field.name);
+        $wapper = $('<label class="radio"></label>').append($radio).append(field.name);
         $container.append($wapper);
     }
 }
@@ -118,7 +118,7 @@ function radios2Pair($fromRadio, $toRadio) {
         return;
     }
     var fromField = {name:$fromRadio.val(),type:$fromRadio.attr("data-type")};
-    var toField = {name:$fromRadio.val(),type:$fromRadio.attr("data-type")};
+    var toField = {name:$toRadio.val(),type:$toRadio.attr("data-type")};
     $fromA = $('<a class="btn btn-default disabled from-field"></a>')
         .attr("data-type", fromField.type)
         .attr("data-name", fromField.name)
