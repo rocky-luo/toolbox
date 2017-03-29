@@ -16,14 +16,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-2">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="list-group table-of-contents">
-                            <a class="list-group-item" href="/toolbox/convert/home">convert代码</a>
-                            <a class="list-group-item" href="/toolbox/mysql/mybatis">mybatis代码</a>
-                        </div>
-                    </div>
-                </div>
+                <ul id="menu-list" class="nav nav-pills nav-stacked">
+                    <li><a href="/toolbox/convert/home">convert代码</a></li>
+                    <li><a href="/toolbox/mysql/mybatis">mybatis代码</a></li>
+                </ul>
             </div>
             <div class="col-xs-8">
                 <sitemesh:write property="body"/>
@@ -38,6 +34,21 @@
 </div>
 <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        var currentUrl = window.location.href;
+        var $as = $("#menu-list").find("a");
+        for (i=0; i<$as.length; i++) {
+            $a=$as.eq(i);
+            var reg = new RegExp(".+"+$a.attr("href")+"$");
+            if (reg.test(currentUrl)) {
+                $a.parent().addClass("active");
+                break;
+            }
+        }
+
+    });
+</script>
 <sitemesh:write property="head"/>
 </body>
 </html>
