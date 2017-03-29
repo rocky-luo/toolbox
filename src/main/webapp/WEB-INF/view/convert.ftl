@@ -52,7 +52,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <a id="parse-bn" class="btn btn-default" role="button" style="outline:none">解析</a>
+            <a id="parse-bn" class="btn btn-default" role="button" style="margin-bottom: 20px">解析</a>
         </div>
     </div>
     <div class="well">
@@ -64,12 +64,10 @@
 
         <div class="row">
             <div class="col-md-4">
-                <div data-group="from-fields" id="from-field-container" style="border:1px rgba(0, 0, 0)">
-
-                </div>
+                <div data-group="from-fields" id="from-field-container"></div>
             </div>
             <div class="col-md-4">
-                <div data-group="to-fields" id="to-field-container" style="border:1px solid rgba(255, 0, 0, 0)"></div>
+                <div data-group="to-fields" id="to-field-container" ></div>
             </div>
         </div>
     </div>
