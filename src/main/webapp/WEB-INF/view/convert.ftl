@@ -77,9 +77,12 @@
         </div>
     </div>
 
-    <div class="row">
-        <label class="radio"><input name="code-type" type="radio" value="1" checked>direct</label>
-        <label class="radio"><input name="code-type" type="radio" value="2">if not null</label>
+    <div class="row form-group">
+        <label class="col-md-2 control-label">展示类型</label>
+        <div class="col-md-10">
+            <label class="radio"><input name="code-type" type="radio" value="1" checked>direct</label>
+            <label class="radio"><input name="code-type" type="radio" value="2">if not null</label>
+        </div>
     </div>
 
     <div class="row">
