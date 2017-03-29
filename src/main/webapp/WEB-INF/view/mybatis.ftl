@@ -1,40 +1,33 @@
 <body>
 <div class="container-fluid">
-    <div class="row" style="margin: 10px">
-        <div class="col-md-1">数据库:</div>
-        <div class="col-md-6">
-            <select id="databases">
-            </select>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-md-2 control-label">数据库</label>
+            <div class="col-md-6">
+                <select id="databases" class="form-control">
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="row" style="margin: 10px">
-        <div class="col-md-1">表:</div>
-        <div class="col-md-6">
-            <select id="tables">
-            </select>
+        <div class="form-group">
+            <label class="col-md-2 control-label">表</label>
+            <div class="col-md-6">
+                <select id="tables" class="form-control">
+                </select>
+            </div>
         </div>
-    </div>
+        <ul class="nav nav-tabs" id="code-type-tab">
+            <li ><a id="javabean-bn" href="#" data-toggle="tab" aria-expanded="true">JavaBean</a></li>
+            <li ><a id="mapper-bn" href="#" data-toggle="tab" >Mapper</a></li>
+            <li ><a id="dao-bn" href="#" data-toggle="tab">Dao</a></li>
+        </ul>
+        <div class="col-md-12 tab-content" style="margin-top: 10px">
+            <pre id="code-block">
 
-    <div class="row" style="margin: 10px">
-        <div class="col-md-3">
-            <button id="javabean-bn" class="btn btn-default">JavaBean</button>
-            <button id="mapper-bn" class="btn btn-default">Mapper</button>
-            <button id="dao-bn" class="btn btn-default">Dao</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <figure class="highlight">
-                <pre>
-                    <code id="code-block">
-
-                    </code>
-                </pre>
-            </figure>
+            </pre>
         </div>
     </div>
 </div>
 </body>
 <head>
-    <script src="/toolbox/static/js/mybatis.js"></script>
+    <script src="/toolbox/static/js/mybatis.js?3"></script>
 </head>

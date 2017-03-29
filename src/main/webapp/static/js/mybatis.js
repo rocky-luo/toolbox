@@ -36,8 +36,14 @@ function bind() {
         })
 
     });
+    $("#tables").change(function () {
+       initTab();
+    });
     //绑定javabean按钮
     $("#javabean-bn").click(function(){
+        initTab();
+        //激活按钮
+        $(this).parent().attr("class", "active");
         $code = $("#code-block");
         database = $("#databases").val();
         table = $("#tables").val();
@@ -57,6 +63,9 @@ function bind() {
 
     //绑定mapper按钮
     $("#mapper-bn").click(function(){
+        initTab();
+        //激活按钮
+        $(this).parent().attr("class", "active");
         $code = $("#code-block");
         database = $("#databases").val();
         table = $("#tables").val();
@@ -76,6 +85,9 @@ function bind() {
 
     //绑定dao按钮
     $("#dao-bn").click(function(){
+        initTab();
+        //激活按钮
+        $(this).parent().attr("class", "active");
         $code = $("#code-block");
         database = $("#databases").val();
         table = $("#tables").val();
@@ -120,4 +132,9 @@ function databaseSelectInit() {
             }
         }
     })
+}
+
+function initTab() {
+    $("#code-type-tab").find("li").removeAttr("class");
+    $("#code-block").empty();
 }

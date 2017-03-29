@@ -21,16 +21,14 @@
                     <li><a href="/toolbox/mysql/mybatis">mybatis代码</a></li>
                 </ul>
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-8" style="margin-top: 50px">
                 <sitemesh:write property="body"/>
             </div>
         </div>
-        <div class="row">
-            <div class="footer">
-                Copyright rocky &copy; 2017 rocky.luo@outlook.com
-            </div>
-        </div>
     </div>
+</div>
+<div class="footer" style="height:50px;position:relative;text-align: center;bottom:0px;left:0px;">
+    Copyright rocky &copy; 2017 rocky.luo@outlook.com
 </div>
 <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -40,7 +38,7 @@
         var $as = $("#menu-list").find("a");
         for (i=0; i<$as.length; i++) {
             $a=$as.eq(i);
-            var reg = new RegExp(".+"+$a.attr("href")+"$");
+            var reg = new RegExp(".+"+$a.attr("href"));
             if (reg.test(currentUrl)) {
                 $a.parent().addClass("active");
                 break;
