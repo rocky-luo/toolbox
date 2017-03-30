@@ -10,6 +10,9 @@ $(document).ready(function(){
 
 //绑定事件
 function bind() {
+    //一键复制
+    var clipboard = new Clipboard('#one-click-copy');
+
     //绑定数据库select
     $("#databases").change(function () {
         database =  $(this).val();

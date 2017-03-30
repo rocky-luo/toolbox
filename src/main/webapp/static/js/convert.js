@@ -4,6 +4,9 @@ $(document).ready(function(){
 });
 
 function bind() {
+    //一键复制
+    var clipboard = new Clipboard('#one-click-copy');
+
     $("#parse-bn").click(function () {
         var strFrom = $("#from-text").val();
         var strTo =$("#to-text").val();
@@ -52,14 +55,18 @@ function genFieldsBn($container, fields) {
     $container.empty();
     for(n in fields) {
         var field = fields[n];
-        var name = $container.attr("data-group");
-        $radio = $('<input type="radio">')
-            .val(field.name)
-            .attr("data-type", field.type)
-            .attr("name", name);
-        $wapper = $('<label class="radio"></label>').append($radio).append(field.name);
-        $container.append($wapper);
+        addFieldBn($container, field);
     }
+}
+
+function addFieldBn($container, field) {
+    var name = $container.attr("data-group");
+    $radio = $('<input type="radio">')
+        .val(field.name)
+        .attr("data-type", field.type)
+        .attr("name", name);
+    $wapper = $('<label class="radio"></label>').append($radio).append(field.name);
+    $container.append($wapper);
 }
 
 function addPair() {
@@ -70,12 +77,12 @@ function addPair() {
 }
 
 function genCode() {
-    var $fromFields = $("#pair-container").find(".from-field");
-    var $toFields = $("#pair-container").find(".to-field");
+   var $pair=$("#pair-container tbody tr");
     var pairs = new Array(0);
-    for (n=0; n < $fromFields.length; n++) {
-        var source = $fromFields.eq(n).attr("data-name");
-        var target = $toFields.eq(n).attr("data-name");
+    for (n=0; n < $pair.length; n++) {
+        var $tds=$pair.eq(n).find("td");
+        var source = $tds.eq(1).attr("data-name");
+        var target = $tds.eq(2).attr("data-name");
         pairs.push({source:source,target:target});
     }
     $.ajax({
@@ -92,6 +99,7 @@ function genCode() {
 }
 
 function autoPair() {
+    $("#pair-container tbody").empty();
     $fromRadios = $('input:radio[name="from-fields"]');
     $toRadios = $('input:radio[name="to-fields"]');
     var toMap = [];
@@ -119,19 +127,41 @@ function radios2Pair($fromRadio, $toRadio) {
     }
     var fromField = {name:$fromRadio.val(),type:$fromRadio.attr("data-type")};
     var toField = {name:$toRadio.val(),type:$toRadio.attr("data-type")};
-    $fromA = $('<a class="btn btn-default disabled from-field"></a>')
+    var no=$("table tbody tr").length + 1;
+    $tdNo=$("<td>"+no+"</td>");
+    $tdFrom=$('<td></td>')
         .attr("data-type", fromField.type)
         .attr("data-name", fromField.name)
         .text(fromField.name);
-    $toA = $('<a class="btn btn-default disabled to-field"></a>')
+    $tdTo=$('<td></td>')
         .attr("data-type", toField.type)
         .attr("data-name", toField.name)
         .text(toField.name);
-
-    $fromWapper = $("<div class='col-md-3'></div>").append($fromA);
-    $toWapper = $("<div class='col-md-3'></div>").append($toA);
-    $wapper = $("<div class='row'></div>").append($fromWapper).append($('<div class="col-md-3">----></div>')).append($toWapper);
-    $("#pair-container").append($wapper);
+    var colors=["info","success","danger","warning","active"];
+    var color=(no-1)%colors.length;
+    $tr=$('<tr></tr>')
+        .addClass(colors[color])
+        .append($tdNo)
+        .append($tdFrom)
+        .append($tdTo);
+    $tr.dblclick(function () {
+        addFieldBn($("#from-field-container"), fromField);
+        addFieldBn($("#to-field-container"), toField);
+        $(this).remove();
+        refreshTable();
+        genCode();
+        
+    });
+    $("#pair-container tbody").append($tr);
     $fromRadio.parent().remove();
     $toRadio.parent().remove();
+}
+
+function refreshTable() {
+    $trs=$("#pair-container tbody tr");
+    for (i=0; i<$trs.length; i++) {
+        $tr=$trs.eq(i);
+        $tr.find("td").eq(0).text(i+1);
+    }
+
 }

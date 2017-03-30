@@ -63,14 +63,34 @@
         </div>
 
         <div class="row">
-            <div class="col-md-4">
-                <div data-group="from-fields" id="from-field-container"></div>
+            <div class="col-md-6">
+                <fieldset class="radio-container">
+                    <legend style="width: auto">From</legend>
+                    <div data-group="from-fields" id="from-field-container"></div>
+                </fieldset>
+
             </div>
-            <div class="col-md-4">
-                <div data-group="to-fields" id="to-field-container" ></div>
+            <div class="col-md-6">
+                <fieldset class="radio-container">
+                    <legend style="width: auto">To</legend>
+                    <div data-group="to-fields" id="to-field-container"></div>
+                </fieldset>
             </div>
         </div>
     </div>
+
+    <table id="pair-container" class="table table-striped table-hover ">
+        <thead>
+        <tr>
+            <th>No.</th>
+            <th>From Field</th>
+            <th>To Field</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
 
     <div class="row">
         <div class="col-md-10" id="pair-container">
@@ -86,8 +106,15 @@
     </div>
 
     <div class="row">
-                <pre id="code-block">
-                </pre>
+        <div class="row">
+            <span id="one-click-copy" class="label label-success" style="float: right" data-clipboard-target="#code-block">
+            一键复制
+            </span>
+        </div>
+        <div class="row">
+            <pre id="code-block" style="margin-top: 1px"></pre>
+        </div>
+
     </div>
 
 
@@ -95,5 +122,10 @@
 </body>
 
 <head>
-    <script src="/toolbox/static/js/convert.js?7"></script>
+    <script src="/toolbox/static/js/convert.js?19"></script>
+    <script type='text/javascript' src="https://cdn.staticfile.org/clipboard.js/1.5.15/clipboard.min.js"></script>
 </head>
+
+<title>
+    <link rel="stylesheet" href="/toolbox/static/css/convert.css">
+</title>
