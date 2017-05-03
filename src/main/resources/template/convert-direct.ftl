@@ -1,3 +1,3 @@
 <#list pairs as pair>
-    output.${pair.target} = input.${pair.source};
+output.set${pair.target}(input.get${pair.source}());
 </#list>

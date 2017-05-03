@@ -6,6 +6,7 @@ import com.rocky.toolbox.model.vo.ConvertPair;
 import com.rocky.toolbox.parse.ObjectField;
 import com.rocky.toolbox.parse.ObjectParseor;
 import com.rocky.toolbox.template.Generator;
+import com.rocky.toolbox.utils.Underline2Camel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,6 +41,10 @@ public class ConvertController {
     @ResponseBody
     public DataResult gen(String pairs, int type) {
         List<ConvertPair> convertPairs = JSON.parseArray(pairs, ConvertPair.class);
+        for (ConvertPair convertPair : convertPairs) {
+            convertPair.setSource(upperFirstLetter(convertPair.getSource()));
+            convertPair.setTarget(upperFirstLetter(convertPair.getTarget()));
+        }
         Map<String, Object> param = Maps.newHashMap();
         param.put("pairs", convertPairs);
         String result = null;
@@ -49,5 +54,15 @@ public class ConvertController {
             result = Generator.classpathTemplateGen("template/convert-null.ftl", param);
         }
         return new SuccessResult(result);
+    }
+
+    private String upperFirstLetter(String word) {
+        char first = word.charAt(0);
+        if (Character.isLowerCase(first)) {
+            String after = Character.toUpperCase(first) + word.substring(1);
+            return after;
+        }else {
+            return word;
+        }
     }
 }
