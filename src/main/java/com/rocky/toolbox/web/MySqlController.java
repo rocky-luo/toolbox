@@ -35,6 +35,8 @@ public class MySqlController {
     @Value("#{dbProperties['db.mysql.password']}")
     private String mysqlPassword;
 
+    private final static String SHOW_COLUMNS_FORMAT = "show full columns from `%s`.`%s`";
+
     private Connection con = null;
 
     @PostConstruct
@@ -77,7 +79,7 @@ public class MySqlController {
     @ResponseBody
     public DataResult javaBean(String database, String table) throws SQLException, IOException, TemplateException {
         Connection con = DriverManager.getConnection(mysqlUrl, mysqlUser, mysqlPassword);
-        String sql = "show full columns from " + database + "." + table;
+        String sql = showColumnsSql(database, table);
         ResultSet rs = con.createStatement().executeQuery(sql);
         Structure structure = new Structure(rs, table);
         Map<String, Object> vos = Maps.newHashMapWithExpectedSize(structure.fieldSize() + 5);
@@ -91,7 +93,7 @@ public class MySqlController {
     @ResponseBody
     public DataResult mapper(String database, String table) throws SQLException {
         Connection con = DriverManager.getConnection(mysqlUrl, mysqlUser, mysqlPassword);
-        String sql = "show full columns from " + database + "." + table;
+        String sql = showColumnsSql(database, table);
         ResultSet rs = con.createStatement().executeQuery(sql);
         Structure structure = new Structure(rs, table);
         Map<String, Object> vos = Maps.newHashMapWithExpectedSize(structure.fieldSize() + 5);
@@ -105,7 +107,7 @@ public class MySqlController {
     @ResponseBody
     public DataResult dao(String database, String table) throws SQLException {
         Connection con = DriverManager.getConnection(mysqlUrl, mysqlUser, mysqlPassword);
-        String sql = "show full columns from " + database + "." + table;
+        String sql = showColumnsSql(database, table);
         ResultSet rs = con.createStatement().executeQuery(sql);
         Structure structure = new Structure(rs, table);
         Map<String, Object> vos = Maps.newHashMapWithExpectedSize(structure.fieldSize() + 5);
@@ -115,4 +117,8 @@ public class MySqlController {
         return new SuccessResult(strJavaBean);
     }
 
+
+    private String showColumnsSql(String database, String table) {
+        return String.format(SHOW_COLUMNS_FORMAT, database, table);
+    }
 }
