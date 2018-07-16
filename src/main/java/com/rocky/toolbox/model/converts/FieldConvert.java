@@ -44,7 +44,10 @@ public class FieldConvert {
             return Date.class;
         }else if (jdbcType.equals("blob")) {
             return byte[].class;
-        } else {
+        } else if (jdbcType.startsWith("smallint")) {
+            return Integer.class;
+        }
+        else {
             throw new UnsupportedOperationException("unknown jdbc type : " + jdbcType);
         }
     }
