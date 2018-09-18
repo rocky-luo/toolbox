@@ -16,9 +16,18 @@ public class ObjectParseor {
     private final static Splitter SPLITTER_BLANK = Splitter.on(" ").omitEmptyStrings().trimResults();
     public static List<ObjectField> parseJava(String text) {
         List<String> lines = parseLine(text);
-        return lines.stream()
-                .map(ObjectParseor::parseJavaObject)
-                .collect(Collectors.toList());
+
+        List<ObjectField> result = Lists.newArrayListWithExpectedSize(lines.size());
+
+        for (String line : lines) {
+            try {
+                result.add(parseJavaObject(line));
+            }catch (Exception e) {
+                // 比如说注释之类的都有可能导致解析出错
+                continue;
+            }
+        }
+        return result;
     }
 
     public static List<ObjectField> parseThrift(String text) {
