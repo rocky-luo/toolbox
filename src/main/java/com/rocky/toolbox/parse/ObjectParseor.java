@@ -43,6 +43,9 @@ public class ObjectParseor {
     }
 
     private static ObjectField parseJavaObject(String line) {
+        if (line.startsWith("//") || line.startsWith("/*")) {
+            throw new RuntimeException("改行为解释");
+        }
         ObjectField objectField = new ObjectField();
         List<String> meta = SPLITTER_BLANK.splitToList(line);
         IllegalArgumentException exception = new IllegalArgumentException(String.format("解析出现错误, %s", line));
