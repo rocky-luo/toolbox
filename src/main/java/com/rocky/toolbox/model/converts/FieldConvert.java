@@ -40,7 +40,7 @@ public class FieldConvert {
             return Double.class;
         }else if (jdbcType.startsWith("decimal")){
             return BigDecimal.class;
-        }else if (jdbcType.equals("date") || jdbcType.startsWith("datetime")) {
+        }else if (jdbcType.equals("date") || jdbcType.startsWith("datetime") || jdbcType.startsWith("timestamp")) {
             return Date.class;
         }else if (jdbcType.equals("blob")) {
             return byte[].class;
